@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="src/css/ex009.css" />
+        <title>Nacionalidade</title>
+        <link rel="stylesheet" href="estilo/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Sua Nacionalidade</h1>
+            <div class="textebox">
+                País <input type="text" id="country" placeholder="Seu Pais de Origem" />
+                <img src="src/images/reload.png" onclick="imgclick()" />
+            </div>
+            <input type="button" value="Verificar" id="button" onclick="verific()"/>
+            <p class="closed_p"></p>        
+        </div>
+        <script src="src/js/ex009.js"></script>
+        <script>
+            function verific() {
+     const country = document.getElementById('country');
+     const p = document.querySelector('.closed_p');
+     p.classList.toggle('opened_p');
+     p.classList.toggle('closed_p');
+     country.value = country.value.toUpperCase();
+     if (country.value == "") {
+        p.innerHTML = `Valor <span class="error">INVALIDO!</span> Por favor clique nas setas ao lado da caixa de texto e digite qual o seu País de Orgigem`
+     } else if (country.value == "BRASIL") {
+        p.innerHTML = `País de origem <span class="brasil">${country.value}</span>: Você é <span class="brasil">Brasileiro!</span>`
+     } else {
+        p.innerHTML = `País de origem <span class="stranger">${country.value}</span>: Você é <span class="stranger">Estrangeiro!</span>`
+     }
+}
+
+function imgclick() {
+    const country = document.getElementById('country');
+    const p = document.querySelector('.opened_p');
+    p.classList.toggle('closed_p');
+    p.classList.toggle('opened_p');
+    if (country.value != "") {
+       country.value = ""
+    }
+}
+
+        </script>
+    </body>
+</html>
