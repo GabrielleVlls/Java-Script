@@ -7,17 +7,21 @@ function Contar() {
     if (i.value.length == 0 || fim.value.length == 0 || pass.value.length == 0) {
         window.alert('[ERRO] Verifique os dados e tente novamente.');
         } else {
-            res.innerHTML = 'Contando: '
+            res.innerHTML = 'Contando: <br>'
             var ini = Number(i.value)
             let f = Number(fim.value)
             let p = Number(pass.value)
+            if (p <= 0) {
+                window.alert('Passo inválido! Considerando PASSO 1')
+                p = 1
+            }
             if (ini < f) {
                 for(let c = ini; c <=f ; c += p) {
                   res.innerHTML += `${c} \u{1f449}`
                  }
             } else  {
-                for(var c = ini; c >= f; c+= p) {
-                    res.innerHTML += `${c} \u{1f449}`
+                for (var c = ini; c >= f; c -= p) {
+                    res.innerHTML += `${c} \u{1f449}`;
                 }
             }
 
